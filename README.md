@@ -27,8 +27,6 @@ jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 2), Automatic
 
 **Cron tab executation tasks**
 
-Cron tab support.
-
 ```csharp
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 3), DateTimeOffset.Now, "* * * * *", null);
 ```
