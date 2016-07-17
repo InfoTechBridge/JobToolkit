@@ -5,13 +5,13 @@
 Usage
 ------
 
-[**One time executation tasks**]
+**One time executation tasks**
 
 ```csharp
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 1));
 ```
 
-[**Automatic retray**]
+**Automatic retray**
 
 Automaticly retray when fail happens in job execution time. In following command job executes for 10 times if fail happens.
 
@@ -19,7 +19,7 @@ Automaticly retray when fail happens in job execution time. In following command
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 2), AutomaticRetryPolicy.Default);
 ```
 
-[**Cron tab executation tasks**]
+**Cron tab executation tasks**
 
 Cron tab support.
 
