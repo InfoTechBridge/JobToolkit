@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JobToolkit.Repository.SqlServer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SqlServer Repository for JonToolkit .NET Job Scheduler")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("iTecBridge")]
 [assembly: AssemblyProduct("JobToolkit.Repository.SqlServer")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © Amir Arayeshi 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
