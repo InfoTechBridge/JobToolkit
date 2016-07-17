@@ -37,3 +37,12 @@ Determining end time for cron tab jobs. The following command executes job for 9
 ```csharp
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 3), DateTimeOffset.Now, "* * * * *", DateTimeOffset.Now.AddDays(90));
 ```
+
+Installation
+-------------
+
+JobToolkit is available as a NuGet package. For installing by the NuGet Package Console window, enter following command:
+
+```
+PM> Install-Package JobToolkit.Core
+```
