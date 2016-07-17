@@ -5,6 +5,12 @@
 Usage
 ------
 
+```csharp
+JobManager jobManager = JobManager.Default;
+JobServer jobServer = JobServer.Default;
+jobServer.Start();
+```
+
 **One time executation tasks**
 
 ```csharp
