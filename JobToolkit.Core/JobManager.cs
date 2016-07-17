@@ -6,29 +6,36 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using JobToolkit.Core.Configuration;
+using System.Diagnostics.Contracts;
+using JobToolkit.Core.Factory;
 
 namespace JobToolkit.Core
 {
     public class JobManager : IScheduler, IEnumerable<Job>
     {
-
         IJobRepository Repository;
-        public IJobServer JobServer;
 
         private static JobManager defaultManager;
 
-        public JobManager()
+        private JobManager()
+            : this(JobToolkitConfiguration.Config.JobManagerConfigurations[JobToolkitConfiguration.Config.DefaultManager])
         {
-            Repository = new CacheJobRepository();
-            JobServer = new JobServer(Repository);
+
         }
 
         public JobManager(IJobRepository repository)
         {
             Repository = repository;
-            JobServer = new JobServer(Repository);
+            //JobServer = new JobServer(Repository);
         }
 
+        public JobManager(JobManagerConfiguration configuration)
+        {
+            var repositoryName = string.IsNullOrEmpty(configuration.Repository.Trim()) ? JobToolkitConfiguration.Config.DefaultRepository : configuration.Repository;
+            Repository = JobToolkitFactory.CreateJobRepository(JobToolkitConfiguration.Config.RepositoryConfigurations[repositoryName]);
+        }
+        
         public static JobManager Default
         {
             get

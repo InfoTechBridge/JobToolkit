@@ -18,10 +18,10 @@ namespace JobToolkit.Repository.Oracle
         IFormatter Formatter;
         string ConnectionString;
         
-        public OracleJobRepository()
+        public OracleJobRepository(string connectionString)
         {
+            ConnectionString = connectionString;
             this.Formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            ConnectionString = @"User ID=smspanel;Password=smspanel;Data Source=XE;Persist Security Info=True;enlist=true";
         }
 
         public OracleJobRepository(string connectionString, IFormatter formatter)

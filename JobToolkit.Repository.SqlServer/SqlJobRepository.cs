@@ -18,10 +18,10 @@ namespace JobToolkit.Repository.SqlServer
         IFormatter Formatter;
         string ConnectionString;
         
-        public SqlJobRepository()
+        public SqlJobRepository(string connectionString)
         {
+            ConnectionString = connectionString;
             this.Formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=JobToolkit;Integrated Security=True";
         }
 
         public SqlJobRepository(string connectionString, IFormatter formatter)

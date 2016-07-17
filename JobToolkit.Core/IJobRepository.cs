@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace JobToolkit.Core
 {
     public interface IJobRepository : IEnumerable<Job>
-    {
+    {        
         string Add(Job job);
         Job Get(string jobId);
         void Update(Job job);

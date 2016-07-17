@@ -14,14 +14,16 @@ namespace JobToolkit.ConsoleUI
     {
         static void Main(string[] args)
         {
-            IJobRepository repository = new OracleJobRepository();
+            //IJobRepository repository = new OracleJobRepository();
             //IJobRepository repository = new SqlJobRepository();
             //IJobRepository repository = new CacheJobRepository();
-            JobManager jobManager = new JobManager(repository);
-            //JobManager jobManager = JobManager.Default;
-            JobServer jobServer = new JobServer(repository);
-            //JobServer jobServer = JobServer.Default;
-            //IJobServer jobServer = jobManager.JobServer;
+
+            //JobManager jobManager = new JobManager(repository);
+            //JobServer jobServer = new JobServer(repository);
+
+            JobManager jobManager = JobManager.Default;
+            JobServer jobServer = JobServer.Default;
+            
             //jobServer.Start();
 
             ExpressionTask task = new ExpressionTask(() => Console.WriteLine("Exprission job {0}.", 1));

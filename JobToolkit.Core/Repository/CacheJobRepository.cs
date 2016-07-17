@@ -24,6 +24,7 @@ namespace JobToolkit.Core
         public CacheJobRepository(IFormatter formatter)
         {
             this.Formatter = formatter;
+            this.Cache = MemoryCache.Default;
         }
 
 

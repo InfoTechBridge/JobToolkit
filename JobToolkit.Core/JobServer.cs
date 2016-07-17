@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JobToolkit.Core.Configuration;
+using JobToolkit.Core.Factory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,15 +15,22 @@ namespace JobToolkit.Core
         CancellationTokenSource cts;
 
         private static JobServer defaultServer;
-
-        public JobServer()
+        
+        private JobServer()
+            : this(JobToolkitConfiguration.Config.JobServerConfigurations[JobToolkitConfiguration.Config.DefaultServer])
         {
-            Repository = new CacheJobRepository();
+
         }
 
         public JobServer(IJobRepository repository)
         {
             Repository = repository;
+        }
+
+        public JobServer(JobServerConfiguration configuration)
+        {
+            var repositoryName = string.IsNullOrEmpty(configuration.Repository.Trim()) ? JobToolkitConfiguration.Config.DefaultRepository : configuration.Repository;
+            Repository = JobToolkitFactory.CreateJobRepository(JobToolkitConfiguration.Config.RepositoryConfigurations[repositoryName]);
         }
 
         public static JobServer Default

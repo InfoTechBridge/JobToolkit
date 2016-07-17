@@ -17,11 +17,11 @@ namespace JobToolkit.DBRepository
     {
         IFormatter Formatter;
         string ConnectionString;
-        
-        public DBJobRepository()
+
+        public DBJobRepository(string connectionString)
         {
+            ConnectionString = connectionString;
             this.Formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=JobToolkit;Integrated Security=True";
         }
 
         public DBJobRepository(string connectionString, IFormatter formatter)
