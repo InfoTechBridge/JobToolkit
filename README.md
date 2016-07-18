@@ -55,7 +55,7 @@ For creating requared tables on your SqlServer database please run following scr
 JobToolkit/JobToolkit.Repository.SqlServer/Scripts/Instal.sql
 ```
 
-And then add JobToolkit.Repository.SqlServer.dll refrence to your project or use following NuGet command to install SqlServer repository library. 
+And then use following NuGet command to install SqlServer repository library. 
 
 ```
 PM> Install-Package JobToolkit.Repository.SqlServer
@@ -78,7 +78,7 @@ For creating requared tables on your Oracle database please run following script
 JobToolkit/JobToolkit.Repository.Oracle/Scripts/Instal.sql
 ```
 
-And then add JobToolkit.Repository.Oracle.dll refrence to your project or use following NuGet command to install Oracle repository library. 
+And then use following NuGet command to install Oracle repository library. 
 
 ```
 PM> Install-Package JobToolkit.Repository.Oracle
