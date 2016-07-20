@@ -101,13 +101,13 @@ If you dont like to hardcode yor repository type in your code you can use Web.co
 
 For configuring your JobToolkit, at first add folowing line inside 'configSections' of your project config file.
 
-```
+```xml
 <section name="jobToolkit" type="JobToolkit.Core.Configuration.JobToolkitConfiguration, JobToolkit.Core" />
 ```
 
 The 'configSections' is first element in your config file and if there is no, add following lines to top of your config file inside the 'configuration' element.
 
-```
+```xml
 <configSections>
     <section name="jobToolkit" type="JobToolkit.Core.Configuration.JobToolkitConfiguration, JobToolkit.Core" />
 </configSections>
@@ -115,7 +115,7 @@ The 'configSections' is first element in your config file and if there is no, ad
 
 In the 'connectionStrings' section of your config fille add your database connection strings, such as following strings.
 
-```
+```xml
 <connectionStrings>
     <clear />
     <add name="sqlConnection" connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=JobToolkit;Integrated Security=True" providerName="System.Data.ProviderName" />
