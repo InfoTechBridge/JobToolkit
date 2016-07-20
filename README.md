@@ -61,7 +61,7 @@ And then use following NuGet command to install SqlServer repository library.
 PM> Install-Package JobToolkit.Repository.SqlServer
 ```
 
-Then use following syntax to store jobs on SqlServer:
+Then use following syntax to store jobs on SqlServer or see Configuration section of this document:
 
 ```csharp
 var repository = new JobToolkit.Repository.SqlServer.SqlJobRepository(<sql server connection string>);
@@ -84,7 +84,7 @@ And then use following NuGet command to install Oracle repository library.
 PM> Install-Package JobToolkit.Repository.Oracle
 ```
 
-Then use following syntax to store jobs on Oracle database:
+Then use following syntax to store jobs on Oracle database or see Configuration section of this document:
 
 ```csharp
 var repository = new JobToolkit.Repository.Oracle.OracleJobRepository(<oracle connection string>);
