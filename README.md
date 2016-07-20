@@ -93,3 +93,63 @@ JobServer jobServer = new JobServer(repository);
 jobServer.Start();
 ```
 Note: For using oracle database Oracle Client must be installed and counfigured on the machine running JobToolkit.
+
+Configuration
+--------------
+
+If you dont like to hardcode yor repository type in your code you can use Web.config or App.config file to manage repositories.
+
+For configuring your JobToolkit, at first add folowing line inside 'configSections' of your project config file.
+
+```
+<section name="jobToolkit" type="JobToolkit.Core.Configuration.JobToolkitConfiguration, JobToolkit.Core" />
+```
+
+The 'configSections' is first element in your config file and if there is no, add following lines to top of your config file inside the 'configuration' element.
+
+```
+<configSections>
+    <section name="jobToolkit" type="JobToolkit.Core.Configuration.JobToolkitConfiguration, JobToolkit.Core" />
+</configSections>
+```
+
+In the 'connectionStrings' section of your config fille add your database connection strings, such as following strings.
+
+```
+<connectionStrings>
+    <clear />
+    <add name="sqlConnection" connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=JobToolkit;Integrated Security=True" providerName="System.Data.ProviderName" />
+    <add name="oracleConnection" connectionString="User ID=jobtoolkit;Password=jobtoolkit;Data Source=XE;Persist Security Info=True;enlist=true" providerName="System.Data.ProviderName" />
+  </connectionStrings>
+```
+
+Then add following tags to your config file inside 'configuration'.
+
+```xml
+<jobToolkit defaultManager="defaultManager" defaultServer="defaultServer" defaultRepository="cacheRepository" >
+    <managers>
+      <add name="defaultManager" type="JobToolkit.Core.JobManager" repository="" />
+    </managers>
+    <servers>
+      <add name="defaultServer" type="JobToolkit.Core.JobServer" repository="" />
+    </servers>
+    <repositories>
+      <add name="cacheRepository" type="JobToolkit.Core.CacheJobRepository" connectionString="" />
+      <add name="sqlRepository" type="JobToolkit.Repository.SqlServer.SqlJobRepository, JobToolkit.Repository.SqlServer" connectionString="sqlConnection" />
+      <add name="oracleRepository" type="JobToolkit.Repository.Oracle.OracleJobRepository, JobToolkit.Repository.Oracle" connectionString="oracleConnection" />
+    </repositories>
+</jobToolkit>
+```
+  
+In the 'jobToolkit' config section 'defaultRepository' attribute determainse witch repository is your default repository. By default it is 'cacheRepository' that says JobToolkit uses in memory repository. By changing value of defaultRepository to 'sqlRepository' or 'oracleRepository', you will connect to diffrent repositorie with out any change in your programs code.
+
+Then in your program just use following syntax to connect to your favorite repository.
+  
+```csharp
+JobManager jobManager = JobManager.Default;
+JobServer jobServer = JobServer.Default;
+jobServer.Start();
+```
+
+For commplete axample please see 'JobToolkit/JobToolkit.ConsoleUI' project in this site.
+  
