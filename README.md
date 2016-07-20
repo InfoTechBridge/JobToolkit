@@ -1,6 +1,26 @@
 # JobToolkit
+[![License](http://img.shields.io/:license-MIT-blue.svg)](https://raw.githubusercontent.com/giacomelli/JobSharp/master/LICENSE)
+
+
 .NET Job Scheduler
 
+Features
+===
+- Fire-and-forget jobs 
+- One time or recurring jobs support by intervals
+- Job scheduling using Crontab expressions
+- Immidiate start jobs and delayed start jobs
+- Automatic retries of failed jobs (configurable)
+- Lambada syntax jobs and custom jobs by inheritance
+- Failure in one job will not affect the others
+- Multiple repository support
+    - In-memory fast repository for job storage
+    - SqlServer database repository for job storage
+    - Oracle database repository for job storage
+    - Custom storage support by writing custom repositories such as (MySql, PostGre Sql, Redis and ... )
+- Easy instalation and configuration
+- Any tipe of projects (Web, Win, Console, Win Service and ...)
+- Allow Sepration between job producer and job executer on diffrent application or servers (Multiple producers and one executer)
 
 Usage
 ------
