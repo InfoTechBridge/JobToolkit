@@ -56,6 +56,37 @@ Determining end time for cron tab jobs. The following command executes job for 9
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 3), DateTimeOffset.Now, "* * * * *", DateTimeOffset.Now.AddDays(90));
 ```
 
+**Custom jobs**
+
+Define your custom job by inheriting your class from JobToolkit.Core.JobTask.
+
+```csharp
+[Serializable]
+public class CustomTask : JobTask
+{
+    string Name = "Custom job 1";
+    public override void Execute()
+    {
+        Console.WriteLine(Name);
+    }
+}
+```
+
+Then using folowing syntax to schedule them.
+
+```csharp
+CustomTask task = new CustomTask();
+Job job = new Job(task);
+job.Cron = CronExpression.Minutely();
+string jobId = jobManager.Enqueue(job).Id;
+```
+
+Or using following syntax.
+
+```csharp
+Job job = jobManager.Schedule(new CustomTask(), AutomaticRetryPolicy.Default);
+```
+
 Installation
 -------------
 
