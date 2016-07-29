@@ -72,7 +72,7 @@ public class CustomTask : JobTask
 }
 ```
 
-Then using folowing syntax to schedule them.
+Then use folowing syntax to schedule one instance of your job.
 
 ```csharp
 CustomTask task = new CustomTask();
@@ -81,7 +81,7 @@ job.Cron = CronExpression.Minutely();
 string jobId = jobManager.Enqueue(job).Id;
 ```
 
-Or using following syntax.
+Or use following syntax.
 
 ```csharp
 Job job = jobManager.Schedule(new CustomTask(), AutomaticRetryPolicy.Default);
