@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Core", "JobToolkit.Core\JobToolkit.Core.csproj", "{C2A2589C-C6C2-4996-9E5B-8E02E1141BB2}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Repository.Oracle", "JobToolkit.Repository.Oracle\JobToolkit.Repository.Oracle.csproj", "{6F612546-3E69-426D-878E-2612BA3794B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Repository.SqlServer", "JobToolkit.Repository.SqlServer\JobToolkit.Repository.SqlServer.csproj", "{28365985-434C-4CFC-B639-9336BC91C2C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Core.Standard", "JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj", "{CB8C25ED-433D-4A64-9389-6431D149E0CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.AnyCacheRepository", "JobToolkit.AnyCache\JobToolkit.AnyCacheRepository.csproj", "{E6248AE9-09EB-4011-B70E-3CBA8069D339}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.ConsoleUI.NetCore", "JobToolkit.ConsoleUI.NetCore\JobToolkit.ConsoleUI.NetCore.csproj", "{7AC82A38-0CC3-482F-9F63-EBCDC883D6CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +45,23 @@ Global
 		{28365985-434C-4CFC-B639-9336BC91C2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28365985-434C-4CFC-B639-9336BC91C2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28365985-434C-4CFC-B639-9336BC91C2C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB8C25ED-433D-4A64-9389-6431D149E0CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB8C25ED-433D-4A64-9389-6431D149E0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB8C25ED-433D-4A64-9389-6431D149E0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB8C25ED-433D-4A64-9389-6431D149E0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6248AE9-09EB-4011-B70E-3CBA8069D339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6248AE9-09EB-4011-B70E-3CBA8069D339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6248AE9-09EB-4011-B70E-3CBA8069D339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6248AE9-09EB-4011-B70E-3CBA8069D339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC82A38-0CC3-482F-9F63-EBCDC883D6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC82A38-0CC3-482F-9F63-EBCDC883D6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC82A38-0CC3-482F-9F63-EBCDC883D6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC82A38-0CC3-482F-9F63-EBCDC883D6CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82237E1F-C25C-41D2-9454-33E8E83F2478}
 	EndGlobalSection
 EndGlobal
