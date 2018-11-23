@@ -68,6 +68,10 @@ namespace JobToolkit.AnyCacheRepository
             return Cache.Remove<Job>(jobId);
         }
 
+        public void RemoveAll()
+        {
+            Cache.ClearCache();
+        }
         public void Update(Job job)
         {
             Cache.Set(job.Id, job);

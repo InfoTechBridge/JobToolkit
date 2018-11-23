@@ -8,5 +8,8 @@ namespace JobToolkit.Core
 {
     public interface IJobTask
     {
+        string Title { get; }
+        string Description { get; set; }
+        void Execute();
     }
 }

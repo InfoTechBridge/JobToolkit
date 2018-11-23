@@ -13,6 +13,7 @@ namespace JobToolkit.Core
         void Update(Job job);
         void UpdatExecStatus(Job job);
         Job Remove(string jobId);
+        void RemoveAll();
 
         List<Job> GetAll();
         List<Job> GetAll(JobDataQueryCriteria criteria);

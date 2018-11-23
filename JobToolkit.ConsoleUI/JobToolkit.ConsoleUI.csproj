@@ -33,7 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AnyCache.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AnyCache.Core.1.0.0\lib\net45\AnyCache.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,23 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobToolkit.Core\JobToolkit.Core.csproj">
-      <Project>{c2a2589c-c6c2-4996-9e5b-8e02e1141bb2}</Project>
-      <Name>JobToolkit.Core</Name>
+    <ProjectReference Include="..\JobToolkit.AnyCache\JobToolkit.AnyCacheRepository.csproj">
+      <Project>{e6248ae9-09eb-4011-b70e-3cba8069d339}</Project>
+      <Name>JobToolkit.AnyCacheRepository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JobToolkit.DBRepository\JobToolkit.DBRepository.csproj">
-      <Project>{4dd7c307-ac65-411a-a5c8-7e70ed57fb7b}</Project>
-      <Name>JobToolkit.DBRepository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JobToolkit.Repository.Oracle\JobToolkit.Repository.Oracle.csproj">
-      <Project>{6f612546-3e69-426d-878e-2612ba3794b0}</Project>
-      <Name>JobToolkit.Repository.Oracle</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JobToolkit.Repository.SqlServer\JobToolkit.Repository.SqlServer.csproj">
-      <Project>{28365985-434c-4cfc-b639-9336bc91c2c9}</Project>
-      <Name>JobToolkit.Repository.SqlServer</Name>
+    <ProjectReference Include="..\JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj">
+      <Project>{cb8c25ed-433d-4a64-9389-6431d149e0cc}</Project>
+      <Name>JobToolkit.Core.Standard</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

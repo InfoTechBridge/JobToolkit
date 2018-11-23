@@ -56,6 +56,10 @@ namespace JobToolkit.Core
         {
             return Repository.Remove(jobId);
         }
+        public void DequeueAll()
+        {
+            Repository.RemoveAll();
+        }
         public Job Schedule(JobTask task, AutomaticRetryPolicy automaticRetry = null)
         {
             return Schedule(task, DateTimeOffset.Now, null, null, automaticRetry);

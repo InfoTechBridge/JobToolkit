@@ -11,7 +11,7 @@ namespace JobToolkit.Core
     {
         public string Id { get; set; }
         public string Title { get; set; }
-        public JobTask Task { get; set; }
+        public IJobTask Task { get; set; }
         public int Priority { get; set; }
         public bool Enabled { get; set; }
         public JobStatus Status { get; set; }
@@ -25,6 +25,10 @@ namespace JobToolkit.Core
         public string Description { get; set; }
         public DateTimeOffset CreateTime { get; set; }
         public DateTimeOffset? UpdateTime { get; set; }
+
+        protected Job()
+        {
+        }
 
         public Job(JobTask task, AutomaticRetryPolicy automaticRetry = null)
             : this(task, DateTimeOffset.Now, null, null, automaticRetry)

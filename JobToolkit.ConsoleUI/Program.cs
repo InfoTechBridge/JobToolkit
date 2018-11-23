@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobToolkit.AnyCacheRepository;
 using JobToolkit.Core;
-using JobToolkit.DBRepository;
-using JobToolkit.Repository.Oracle;
-using JobToolkit.Repository.SqlServer;
 
 namespace JobToolkit.ConsoleUI
 {
@@ -16,13 +14,16 @@ namespace JobToolkit.ConsoleUI
         {
             //IJobRepository repository = new OracleJobRepository();
             //IJobRepository repository = new SqlJobRepository();
-            //IJobRepository repository = new CacheJobRepository();
 
-            //JobManager jobManager = new JobManager(repository);
-            //JobServer jobServer = new JobServer(repository);
+            
 
-            JobManager jobManager = JobManager.Default;
-            JobServer jobServer = JobServer.Default;
+            IJobRepository repository = new AnyCacheJobRepository();
+
+            JobManager jobManager = new JobManager(repository);
+            JobServer jobServer = new JobServer(repository);
+
+            //JobManager jobManager = JobManager.Default;
+            //JobServer jobServer = JobServer.Default;
             
             //jobServer.Start();
 

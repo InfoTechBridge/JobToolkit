@@ -149,7 +149,7 @@ namespace JobToolkit.Core
 
             try
             {
-                job.Task.Execute();
+                job.Task?.Execute();
 
                 job.LastExecutanInfo.Status = JobExecutanStatus.Success;
                 job.LastExecutanInfo.Description = JobExecutanStatus.Success.ToString();

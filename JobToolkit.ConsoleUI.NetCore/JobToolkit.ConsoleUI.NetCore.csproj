@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AnyCache.Redis" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JobToolkit.AnyCache\JobToolkit.AnyCacheRepository.csproj" />
     <ProjectReference Include="..\JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj" />
   </ItemGroup>

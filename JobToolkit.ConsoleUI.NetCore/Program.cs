@@ -1,4 +1,6 @@
-﻿using JobToolkit.AnyCacheRepository;
+﻿using AnyCache.Redis;
+using AnyCache.Serialization;
+using JobToolkit.AnyCacheRepository;
 using JobToolkit.Core;
 using System;
 
@@ -11,13 +13,19 @@ namespace JobToolkit.ConsoleUI.NetCore
             //IJobRepository repository = new OracleJobRepository();
             //IJobRepository repository = new SqlJobRepository();
             //IJobRepository repository = new CacheJobRepository();
-            IJobRepository repository = new AnyCacheJobRepository();
+            //IJobRepository repository = new AnyCacheJobRepository();
 
-            JobManager jobManager = new JobManager(repository);
-            JobServer jobServer = new JobServer(repository);
+            //var repository = new AnyCacheJobRepository(new RedisCache(keyPrefix: "job", serializer: new BinarySerializer()));
+            var repository = new AnyCacheJobRepository(new RedisCache(keyPrefix: "job", serializer: new JsonSerializer()));
+            //var repository = new AnyCacheJobRepository(new RedisCache(keyPrefix: "job", serializer: new MsgPackSerializer()));
 
-            //JobManager jobManager = JobManager.Default;
-            //JobServer jobServer = JobServer.Default;
+            var jobManager = new JobManager(repository);
+            var jobServer = new JobServer(repository);
+
+            //var jobManager = JobManager.Default;
+            //var jobServer = JobServer.Default;
+
+            jobManager.DequeueAll();
 
             //jobServer.Start();
 
