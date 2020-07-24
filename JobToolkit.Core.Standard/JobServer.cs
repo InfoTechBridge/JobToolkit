@@ -1,11 +1,11 @@
-﻿using JobToolkit.Core.Configuration;
-using JobToolkit.Core.Factory;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+//using JobToolkit.Core.Configuration;
+//using JobToolkit.Core.Factory;
 
 namespace JobToolkit.Core
 {
@@ -16,33 +16,33 @@ namespace JobToolkit.Core
 
         private static JobServer defaultServer;
         
-        private JobServer()
-            : this(JobToolkitConfiguration.Config.JobServerConfigurations[JobToolkitConfiguration.Config.DefaultServer])
-        {
+        //private JobServer()
+        //    : this(JobToolkitConfiguration.Config.JobServerConfigurations[JobToolkitConfiguration.Config.DefaultServer])
+        //{
 
-        }
+        //}
 
         public JobServer(IJobRepository repository)
         {
             Repository = repository;
         }
 
-        public JobServer(JobServerConfiguration configuration)
-        {
-            var repositoryName = string.IsNullOrEmpty(configuration.Repository.Trim()) ? JobToolkitConfiguration.Config.DefaultRepository : configuration.Repository;
-            Repository = JobToolkitFactory.CreateJobRepository(JobToolkitConfiguration.Config.RepositoryConfigurations[repositoryName]);
-        }
+        //public JobServer(JobServerConfiguration configuration)
+        //{
+        //    var repositoryName = string.IsNullOrEmpty(configuration.Repository.Trim()) ? JobToolkitConfiguration.Config.DefaultRepository : configuration.Repository;
+        //    Repository = JobToolkitFactory.CreateJobRepository(JobToolkitConfiguration.Config.RepositoryConfigurations[repositoryName]);
+        //}
 
-        public static JobServer Default
-        {
-            get
-            {
-                if (defaultServer == null)
-                    defaultServer = new JobServer();
+        //public static JobServer Default
+        //{
+        //    get
+        //    {
+        //        if (defaultServer == null)
+        //            defaultServer = new JobServer();
 
-                return defaultServer;
-            }
-        }
+        //        return defaultServer;
+        //    }
+        //}
 
         public void Start()
         {
@@ -149,7 +149,7 @@ namespace JobToolkit.Core
 
             try
             {
-                job.Task.Execute();
+                job.Task?.Execute();
 
                 job.LastExecutanInfo.Status = JobExecutanStatus.Success;
                 job.LastExecutanInfo.Description = JobExecutanStatus.Success.ToString();

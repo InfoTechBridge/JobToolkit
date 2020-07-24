@@ -16,11 +16,16 @@ namespace JobToolkit.Core
         Job Enqueue(Job job);
 
         /// <summary>
-        /// remove job from queue
+        /// Removes a job from queue
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
         Job Dequeue(string jobId);
+
+        /// <summary>
+        /// Removes all jobs from queue
+        /// </summary>
+        void DequeueAll();
 
         /// <summary>
         /// Immidiate run

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace JobToolkit.Core
 {
     [Serializable]
-    public abstract class JobTask
+    public abstract class JobTask : IJobTask
     {
         public virtual string Title
         {

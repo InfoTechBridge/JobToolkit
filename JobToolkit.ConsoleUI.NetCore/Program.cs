@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnyCache.Redis;
+using AnyCache.Serialization;
 using JobToolkit.AnyCacheRepository;
 using JobToolkit.Core;
+using System;
 
-namespace JobToolkit.ConsoleUI
+namespace JobToolkit.ConsoleUI.NetCore
 {
     class Program
     {
@@ -14,17 +12,21 @@ namespace JobToolkit.ConsoleUI
         {
             //IJobRepository repository = new OracleJobRepository();
             //IJobRepository repository = new SqlJobRepository();
+            //IJobRepository repository = new CacheJobRepository();
+            //IJobRepository repository = new AnyCacheJobRepository();
 
-            
+            //var repository = new AnyCacheJobRepository(new RedisCache(keyPrefix: "job", serializer: new BinarySerializer()));
+            var repository = new AnyCacheJobRepository(new RedisCache(keyPrefix: "job", serializer: new JsonSerializer()));
+            //var repository = new AnyCacheJobRepository(new RedisCache(keyPrefix: "job", serializer: new MsgPackSerializer()));
 
-            IJobRepository repository = new AnyCacheJobRepository();
+            var jobManager = new JobManager(repository);
+            var jobServer = new JobServer(repository);
 
-            JobManager jobManager = new JobManager(repository);
-            JobServer jobServer = new JobServer(repository);
+            //var jobManager = JobManager.Default;
+            //var jobServer = JobServer.Default;
 
-            //JobManager jobManager = JobManager.Default;
-            //JobServer jobServer = JobServer.Default;
-            
+            jobManager.DequeueAll();
+
             //jobServer.Start();
 
             ExpressionTask task = new ExpressionTask(() => Console.WriteLine("Exprission job {0}.", 1));

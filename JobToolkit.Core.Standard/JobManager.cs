@@ -6,9 +6,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-using JobToolkit.Core.Configuration;
+//using JobToolkit.Core.Configuration;
 using System.Diagnostics.Contracts;
-using JobToolkit.Core.Factory;
+//using JobToolkit.Core.Factory;
 
 namespace JobToolkit.Core
 {
@@ -18,11 +18,11 @@ namespace JobToolkit.Core
 
         private static JobManager defaultManager;
 
-        private JobManager()
-            : this(JobToolkitConfiguration.Config.JobManagerConfigurations[JobToolkitConfiguration.Config.DefaultManager])
-        {
+        //private JobManager()
+        //    : this(JobToolkitConfiguration.Config.JobManagerConfigurations[JobToolkitConfiguration.Config.DefaultManager])
+        //{
 
-        }
+        //}
 
         public JobManager(IJobRepository repository)
         {
@@ -30,22 +30,22 @@ namespace JobToolkit.Core
             //JobServer = new JobServer(Repository);
         }
 
-        public JobManager(JobManagerConfiguration configuration)
-        {
-            var repositoryName = string.IsNullOrEmpty(configuration.Repository.Trim()) ? JobToolkitConfiguration.Config.DefaultRepository : configuration.Repository;
-            Repository = JobToolkitFactory.CreateJobRepository(JobToolkitConfiguration.Config.RepositoryConfigurations[repositoryName]);
-        }
+        //public JobManager(JobManagerConfiguration configuration)
+        //{
+        //    var repositoryName = string.IsNullOrEmpty(configuration.Repository.Trim()) ? JobToolkitConfiguration.Config.DefaultRepository : configuration.Repository;
+        //    Repository = JobToolkitFactory.CreateJobRepository(JobToolkitConfiguration.Config.RepositoryConfigurations[repositoryName]);
+        //}
         
-        public static JobManager Default
-        {
-            get
-            {
-                if (defaultManager == null)
-                    defaultManager = new JobManager();
+        //public static JobManager Default
+        //{
+        //    get
+        //    {
+        //        if (defaultManager == null)
+        //            defaultManager = new JobManager();
 
-                return defaultManager;
-            }
-        }
+        //        return defaultManager;
+        //    }
+        //}
 
         public Job Enqueue(Job job)
         {
@@ -55,6 +55,10 @@ namespace JobToolkit.Core
         public Job Dequeue(string jobId)
         {
             return Repository.Remove(jobId);
+        }
+        public void DequeueAll()
+        {
+            Repository.RemoveAll();
         }
         public Job Schedule(JobTask task, AutomaticRetryPolicy automaticRetry = null)
         {
