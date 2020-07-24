@@ -1,4 +1,6 @@
 ﻿using AnyCache.InMemory;
+using AnyCache.Redis;
+using AnyCache.Serialization;
 using JobToolkit.Core;
 using JobToolkit.Core.Repositories.Cache;
 using JobToolkit.Core.Standard.Repositories.Database;
@@ -12,19 +14,25 @@ namespace JobToolkit.NetCore.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
+            // In Memory
             var anyCache = new InMemoryCache();
+
+            // Redis
+            var serializer = new BinarySerializer();
+            //var serializer = new JsonSerializer();
+            //var serializer = new MsgPackSerializer();
+            //var anyCache = new RedisCache(keyPrefix: "jobToolkit", serializer: serializer);
+
             var repository = new CacheJobRepository(anyCache);
 
-            //SQlite
-            var path = Environment.CurrentDirectory;
-            var binIndex = path.IndexOf("\\bin\\");
-            path = path.Substring(0, binIndex);
-            var connectionString = $"Data Source={path}\\App_Data\\MyDatabase.sqlite; Version=3;datetimeformat=CurrentCulture";
-            var dataManager = new DataManagerNoConfilict(connectionString, new ORMToolkit.SQLite.SQLiteDataProviderFactory());
-            OrmToolkitSettings.ObjectFactory = new ORMToolkit.Core.Factories.ObjectFactory2();
-            //SQL Server
+            ////SQlite
+            //var path = Environment.CurrentDirectory;
+            //var binIndex = path.IndexOf("\\bin\\");
+            //path = path.Substring(0, binIndex);
+            //var connectionString = $"Data Source={path}\\App_Data\\MyDatabase.sqlite; Version=3;datetimeformat=CurrentCulture";
+            //var dataManager = new DataManagerNoConfilict(connectionString, new ORMToolkit.SQLite.SQLiteDataProviderFactory());
+            //OrmToolkitSettings.ObjectFactory = new ORMToolkit.Core.Factories.ObjectFactory2();
+            ////SQL Server
 
             //var repository = new DBJobRepository(dataManager);
 

@@ -12,26 +12,17 @@ namespace JobToolkit.Core.Repositories.Cache
 {
     public class CacheJobRepository : IJobRepository, IEnumerable
     {
-        private readonly IFormatter Formatter;
         private readonly IAnyCache Cache;
 
         public CacheJobRepository(IAnyCache cache)
         {
-            this.Formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
             this.Cache = cache;
         }
-
-        public CacheJobRepository(IFormatter formatter, IAnyCache cache)
-        {
-            this.Formatter = formatter;
-            this.Cache = cache;
-        }
-
 
         public string Add(Job job)
         {
             string key = Guid.NewGuid().ToString().Replace("-", string.Empty);
-            Cache.Add(key, job, null);
+            Cache.Add(key, job);
             return key;
 
             //MemoryStream stream = new MemoryStream();
@@ -41,15 +32,12 @@ namespace JobToolkit.Core.Repositories.Cache
 
         public Job Get(string jobId)
         {
-            return (Job)Cache.Get(jobId);
-            //MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(jobId));
-
-            //return (Job)Formatter.Deserialize(stream);
+            return Cache.Get<Job>(jobId);
         }
                
         public void Update(Job job)
         {
-            Cache.Set(job.Id, job, null);
+            Cache.Set(job.Id, job);
         }
         public void UpdatExecStatus(Job job)
         {
@@ -64,7 +52,7 @@ namespace JobToolkit.Core.Repositories.Cache
         }
         public Job Remove(string jobId)
         {
-            return (Job)Cache.Remove(jobId);
+            return Cache.Remove<Job>(jobId);
         }
 
         public void RemoveAll()

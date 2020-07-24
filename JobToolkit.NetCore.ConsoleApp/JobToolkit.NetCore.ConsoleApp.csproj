@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="AnyCache.InMemory" Version="1.0.2" />
+    <PackageReference Include="AnyCache.Redis" Version="1.0.2" />
+    <PackageReference Include="AnyCache.Serialization" Version="1.0.1" />
     <PackageReference Include="ORMToolkit.SQLite" Version="1.0.1" />
   </ItemGroup>
 
