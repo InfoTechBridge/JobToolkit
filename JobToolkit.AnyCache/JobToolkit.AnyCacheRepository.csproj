@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>JobToolkit.AnyCacheRepository</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Amir Arayeshi</Authors>
@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AnyCache.Core" Version="1.0.0" />
-    <PackageReference Include="AnyCache.InMemory" Version="1.0.0" />
+    <PackageReference Include="AnyCache.Core" Version="1.0.1" />
+    <PackageReference Include="AnyCache.InMemory" Version="1.0.2" />
   </ItemGroup>
 
   <!-- common NuGet package refs that affect all projects -->
@@ -28,15 +28,15 @@
 
 
   <!-- .NET 4.5 references, compilation flags and build options -->
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Configuration" />
   </ItemGroup>  
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">
-    <DefineConstants>NET45;NETFULL</DefineConstants>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+    <DefineConstants>NET46;NETFULL</DefineConstants>
   </PropertyGroup>
 
 

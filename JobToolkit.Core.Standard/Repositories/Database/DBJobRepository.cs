@@ -179,6 +179,10 @@ namespace JobToolkit.Core.Standard.Repositories.Database
             
             return job;
         }
+        public void RemoveAll()
+        {
+            throw new NotImplementedException();
+        }
         public List<Job> GetAll()
         {
             return GetAll(new JobDataQueryCriteria());
@@ -282,7 +286,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
             return this.GetEnumerator();
         }
 
-        protected byte[] SerializeTask(JobTask task)
+        protected byte[] SerializeTask(IJobTask task)
         {
             byte[] taskData;
             using (MemoryStream stream = new MemoryStream())
@@ -292,7 +296,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
             }
             return taskData;
         }
-        protected string SerializeTaskAsString(JobTask task)
+        protected string SerializeTaskAsString(IJobTask task)
         {
             byte[] taskData = SerializeTask(task);
             //return Encoding.UTF8.GetString(taskData);

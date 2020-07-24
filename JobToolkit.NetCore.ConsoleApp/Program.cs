@@ -31,6 +31,8 @@ namespace JobToolkit.NetCore.ConsoleApp
             JobManager jobManager = new JobManager(repository);
             JobServer jobServer = new JobServer(repository);
 
+            //jobManager.DequeueAll();
+
             //jobServer.Start();
 
             ExpressionTask task = new ExpressionTask(() => Console.WriteLine("Exprission job {0}.", 1));

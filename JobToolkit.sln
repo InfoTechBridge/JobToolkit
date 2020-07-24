@@ -15,7 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Repository.SqlSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.Core.Standard", "JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj", "{E6EE5495-BD3D-4B8B-A413-9D2F2F4B7CF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.NetCore.ConsoleApp", "JobToolkit.NetCore.ConsoleApp\JobToolkit.NetCore.ConsoleApp.csproj", "{6C467BA2-5EC8-4962-853A-8AEAE8B96090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.NetCore.ConsoleApp", "JobToolkit.NetCore.ConsoleApp\JobToolkit.NetCore.ConsoleApp.csproj", "{6C467BA2-5EC8-4962-853A-8AEAE8B96090}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.AnyCacheRepository", "JobToolkit.AnyCache\JobToolkit.AnyCacheRepository.csproj", "{E967450D-F158-4DAF-A29F-CF9BA1559A61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.ConsoleUI.NetCore", "JobToolkit.ConsoleUI.NetCore\JobToolkit.ConsoleUI.NetCore.csproj", "{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{6C467BA2-5EC8-4962-853A-8AEAE8B96090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C467BA2-5EC8-4962-853A-8AEAE8B96090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C467BA2-5EC8-4962-853A-8AEAE8B96090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

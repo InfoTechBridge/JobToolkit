@@ -67,6 +67,11 @@ namespace JobToolkit.Core.Repositories.Cache
             return (Job)Cache.Remove(jobId);
         }
 
+        public void RemoveAll()
+        {
+            Cache.ClearCache();
+        }
+
         public IEnumerator<Job> GetEnumerator()
         {
             foreach (var item in Cache)
