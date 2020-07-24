@@ -21,6 +21,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.AnyCacheReposito
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.ConsoleUI.NetCore", "JobToolkit.ConsoleUI.NetCore\JobToolkit.ConsoleUI.NetCore.csproj", "{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64F7B9A4-E577-414B-9A8B-5FBD7BBA8691}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
