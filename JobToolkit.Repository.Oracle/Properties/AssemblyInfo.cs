@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JobToolkit.Repository.Oracle")]
-[assembly: AssemblyDescription("Oracle Repository for JonToolkit .NET Job Scheduler")]
+[assembly: AssemblyDescription("Oracle Repository for JobToolkit .NET Job Scheduler")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("iTecBridge")]
 [assembly: AssemblyProduct("JobToolkit.Repository.Oracle")]

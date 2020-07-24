@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>JobToolkit.Core</PackageId>
+    <Authors>Amir Arayeshi</Authors>
+    <Company>Information Technology Bridge</Company>
+    <Product>JobToolkit</Product>
+    <Copyright>Copyright © 2020 InfoTechBridge</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>.Net ASP.NET Job Scheduler Long-Running</Description>
+    <PackageProjectUrl>https://github.com/InfoTechBridge/JobToolkit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InfoTechBridge/JobToolkit</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>csharp dotnet dotnetcore job-scheduler background-jobs</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+    <DefineConstants>NETFX</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.0" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Repositories\Database\Scripts\Oracle.sql" />
+    <None Remove="Repositories\Database\Scripts\SQLlite.sql" />
+    <None Remove="Repositories\Database\Scripts\SqlServer.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Repositories\Database\Scripts\SqlServer.sql" />
+    <EmbeddedResource Include="Repositories\Database\Scripts\Oracle.sql" />
+    <EmbeddedResource Include="Repositories\Database\Scripts\SQLlite.sql" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AnyCache.Core" Version="1.0.1" />
+    <PackageReference Include="ncrontab" Version="3.3.1" />
+    <PackageReference Include="ORMToolkit.Core" Version="1.0.37" />
+    <PackageReference Include="Serialize.Linq" Version="1.8.1" />
+    <PackageReference Include="NCrontab.Advanced" Version="1.3.21" />
+
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
+
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>
