@@ -230,9 +230,6 @@ service.AddSingleton<IJobServer>(s =>
 });
 ```
 
-Note: Remember to register InMemoryJobRepository as singleton to make sure using same repository instance in whole of your project.
-Note: Remember to register JobServer as singleton to make sure using same JobServer instance in whole of your project.
-
 Now you can inject JobToolkit at runtime into your services/controllers:
 
 ```csharp
@@ -248,6 +245,11 @@ public class EmployeesController
     // use _scheduler
 }
 ```
+
+
+Note: Remember to register InMemoryJobRepository as singleton to make sure using same repository instance in whole of your project.
+
+Note: Remember to register JobServer as singleton to make sure using same JobServer instance in whole of your project.
 
 Configuration for .Net Framework projects
 -----------------------------------------
