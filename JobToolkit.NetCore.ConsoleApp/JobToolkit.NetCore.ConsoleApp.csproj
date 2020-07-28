@@ -6,18 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AnyCache.InMemory" Version="1.0.2" />
-    <PackageReference Include="AnyCache.Redis" Version="1.0.2" />
-    <PackageReference Include="AnyCache.Serialization" Version="1.0.1" />
-    <PackageReference Include="ORMToolkit.SQLite" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobToolkit.InMemory\JobToolkit.InMemory.csproj" />
+    <ProjectReference Include="..\JobToolkit.Oracle\JobToolkit.Oracle.csproj" />
+    <ProjectReference Include="..\JobToolkit.Redis\JobToolkit.Redis.csproj" />
+    <ProjectReference Include="..\JobToolkit.SQLite\JobToolkit.SQLite.csproj" />
+    <ProjectReference Include="..\JobToolkit.SqlServer\JobToolkit.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>

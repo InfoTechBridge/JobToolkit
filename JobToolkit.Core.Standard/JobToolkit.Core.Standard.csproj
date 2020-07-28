@@ -13,7 +13,11 @@
     <PackageProjectUrl>https://github.com/InfoTechBridge/JobToolkit</PackageProjectUrl>
     <RepositoryUrl>https://github.com/InfoTechBridge/JobToolkit</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <PackageTags>csharp dotnet dotnetcore job-scheduler background-jobs</PackageTags>
+    <PackageTags>csharp dotnet ASP.NET job dotnetcore job-scheduler background-jobs Long-Running Scheduler</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>1.0.1</Version>
+    <RootNamespace>JobToolkit.Core</RootNamespace>
+    <AssemblyName>JobToolkit.Core</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
@@ -38,23 +42,9 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
     <DefineConstants>NETSTANDARD</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Repositories\Database\Scripts\Oracle.sql" />
-    <None Remove="Repositories\Database\Scripts\SQLlite.sql" />
-    <None Remove="Repositories\Database\Scripts\SqlServer.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Repositories\Database\Scripts\SqlServer.sql" />
-    <EmbeddedResource Include="Repositories\Database\Scripts\Oracle.sql" />
-    <EmbeddedResource Include="Repositories\Database\Scripts\SQLlite.sql" />
-  </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="AnyCache.Core" Version="1.0.1" />
     <PackageReference Include="ncrontab" Version="3.3.1" />
-    <PackageReference Include="ORMToolkit.Core" Version="1.0.37" />
     <PackageReference Include="Serialize.Linq" Version="1.8.1" />
     <PackageReference Include="NCrontab.Advanced" Version="1.3.21" />
 

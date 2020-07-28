@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Core", "JobToolkit.Core\JobToolkit.Core.csproj", "{C2A2589C-C6C2-4996-9E5B-8E02E1141BB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.ConsoleUI", "JobToolkit.ConsoleUI\JobToolkit.ConsoleUI.csproj", "{6060BA8A-FA90-4668-8D69-A166030C2E45}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.DBRepository", "JobToolkit.DBRepository\JobToolkit.DBRepository.csproj", "{4DD7C307-AC65-411A-A5C8-7E70ED57FB7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Repository.Oracle", "JobToolkit.Repository.Oracle\JobToolkit.Repository.Oracle.csproj", "{6F612546-3E69-426D-878E-2612BA3794B0}"
@@ -17,15 +15,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.Core.Standard", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.NetCore.ConsoleApp", "JobToolkit.NetCore.ConsoleApp\JobToolkit.NetCore.ConsoleApp.csproj", "{6C467BA2-5EC8-4962-853A-8AEAE8B96090}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.AnyCacheRepository", "JobToolkit.AnyCache\JobToolkit.AnyCacheRepository.csproj", "{E967450D-F158-4DAF-A29F-CF9BA1559A61}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.ConsoleUI.NetCore", "JobToolkit.ConsoleUI.NetCore\JobToolkit.ConsoleUI.NetCore.csproj", "{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobToolkit.AnyCache", "JobToolkit.AnyCache\JobToolkit.AnyCache.csproj", "{E967450D-F158-4DAF-A29F-CF9BA1559A61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64F7B9A4-E577-414B-9A8B-5FBD7BBA8691}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.InMemory", "JobToolkit.InMemory\JobToolkit.InMemory.csproj", "{E8CB42D1-5628-45E8-B64A-90B4F4EEDA00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Redis", "JobToolkit.Redis\JobToolkit.Redis.csproj", "{42C744D9-99D7-419D-9795-3369405A4150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.DBRepository.Standard", "JobToolkit.DBRepository.Standard\JobToolkit.DBRepository.Standard.csproj", "{D304FE9D-D871-4A58-88E9-E5BA17D665DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.SQLite", "JobToolkit.SQLite\JobToolkit.SQLite.csproj", "{8EFB7888-46BD-4BE7-8521-DEB05541D835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.ConsoleUI", "JobToolkit.ConsoleUI\JobToolkit.ConsoleUI.csproj", "{6060BA8A-FA90-4668-8D69-A166030C2E45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.Oracle", "JobToolkit.Oracle\JobToolkit.Oracle.csproj", "{49C279A7-9AC2-428F-90B4-D57372CAF584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobToolkit.SqlServer", "JobToolkit.SqlServer\JobToolkit.SqlServer.csproj", "{279B9101-F472-427D-BC18-F56657AEE23F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +47,6 @@ Global
 		{C2A2589C-C6C2-4996-9E5B-8E02E1141BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2A2589C-C6C2-4996-9E5B-8E02E1141BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2A2589C-C6C2-4996-9E5B-8E02E1141BB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DD7C307-AC65-411A-A5C8-7E70ED57FB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4DD7C307-AC65-411A-A5C8-7E70ED57FB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DD7C307-AC65-411A-A5C8-7E70ED57FB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,10 +71,34 @@ Global
 		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E967450D-F158-4DAF-A29F-CF9BA1559A61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD29A483-6B5B-4BEC-A8D8-41656EB5A150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CB42D1-5628-45E8-B64A-90B4F4EEDA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CB42D1-5628-45E8-B64A-90B4F4EEDA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CB42D1-5628-45E8-B64A-90B4F4EEDA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CB42D1-5628-45E8-B64A-90B4F4EEDA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C744D9-99D7-419D-9795-3369405A4150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C744D9-99D7-419D-9795-3369405A4150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C744D9-99D7-419D-9795-3369405A4150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C744D9-99D7-419D-9795-3369405A4150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D304FE9D-D871-4A58-88E9-E5BA17D665DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D304FE9D-D871-4A58-88E9-E5BA17D665DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D304FE9D-D871-4A58-88E9-E5BA17D665DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D304FE9D-D871-4A58-88E9-E5BA17D665DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFB7888-46BD-4BE7-8521-DEB05541D835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFB7888-46BD-4BE7-8521-DEB05541D835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFB7888-46BD-4BE7-8521-DEB05541D835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFB7888-46BD-4BE7-8521-DEB05541D835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6060BA8A-FA90-4668-8D69-A166030C2E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C279A7-9AC2-428F-90B4-D57372CAF584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C279A7-9AC2-428F-90B4-D57372CAF584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C279A7-9AC2-428F-90B4-D57372CAF584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C279A7-9AC2-428F-90B4-D57372CAF584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{279B9101-F472-427D-BC18-F56657AEE23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279B9101-F472-427D-BC18-F56657AEE23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279B9101-F472-427D-BC18-F56657AEE23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279B9101-F472-427D-BC18-F56657AEE23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

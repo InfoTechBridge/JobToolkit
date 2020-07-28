@@ -17,17 +17,21 @@ Features
     - In-memory fast repository for job storage
     - SqlServer database repository for job storage
     - Oracle database repository for job storage
-    - Custom storage support by writing custom repositories such as (MySql, PostGre Sql, Redis and ... )
+    - SQLite database repository for job storage
+    - Redis cache repository for job storage
+    - Custom storage support by writing custom repositories such as (MySql, PostGre Sql and ... )
 - Easy instalation and configuration
-- Any tipe of projects (Web, Win, Console, Win Service and ...)
+- Supports any tipe of projects (Web, Win, Console, Win Service and ...)
+- Supports DotNet Framework, DotNet Core and Xamarin projects
 - Allow Sepration between job producer and job executer on diffrent application or servers (Multiple producers and one executer)
 
 Usage
 ------
 
 ```csharp
-JobManager jobManager = JobManager.Default;
-JobServer jobServer = JobServer.Default;
+var repository = new InMemoryJobRepository();
+JobManager jobManager = new JobManager(repository);
+JobServer jobServer = new JobServer(repository);
 jobServer.Start();
 ```
 
@@ -90,32 +94,45 @@ Job job = jobManager.Schedule(new CustomTask(), AutomaticRetryPolicy.Default);
 Installation
 -------------
 
-JobToolkit is available as a NuGet package. For installing by the NuGet Package Console window, enter following command:
+JobToolkit stores jobs in diffrent type of storage such as InMemory, Redis, Sql Server, Oracle and SQLite databases and is available as a NuGet package. 
+
+**In Memory job repository**
+
+JobToolkit saves jobs in memmory cache and everything will be cleared when the application ends.
+
+Use following NuGet command to install JobToolkit InMemory library. 
 
 ```
-PM> Install-Package JobToolkit.Core
+PM> Install-Package JobToolkit.InMemory
 ```
 
-By default JobToolkit saves jobs in memmory cache and by ending the application everything will be cleared. For storing job permanently, JobToolkit at the moment supports SqlServer and Oracle databases.
+Then use following syntax to store jobs in memory:
+
+```csharp
+var repository = new InMemoryJobRepository();
+JobManager jobManager = new JobManager(repository);
+JobServer jobServer = new JobServer(repository);
+jobServer.Start();
+```
 
 **Sql server**
 
-For creating requared tables on your SqlServer database please run following script in your database:
+Use following NuGet command to install JobToolkit SqlServer library.  
 
 ```
-JobToolkit/JobToolkit.Repository.SqlServer/Scripts/Instal.sql
+PM> Install-Package JobToolkit.SqlServer
 ```
 
-And then use following NuGet command to install SqlServer repository library. 
+then for creating requared tables on your SqlServer database please run following script in your database:
 
 ```
-PM> Install-Package JobToolkit.Repository.SqlServer
+JobToolkit/JobToolkit.SqlServer/Scripts/SqlServer.sql
 ```
 
-Then use following syntax to store jobs on SqlServer or see Configuration section of this document:
+Then use following syntax to store jobs on SqlServer:
 
 ```csharp
-var repository = new JobToolkit.Repository.SqlServer.SqlJobRepository(<sql server connection string>);
+var repository = new JobToolkit.SqlServer.SqlJobRepository(<sql server connection string>);
 JobManager jobManager = new JobManager(repository);
 JobServer jobServer = new JobServer(repository);
 jobServer.Start();
@@ -123,30 +140,119 @@ jobServer.Start();
 
 **Oracle**
 
-For creating requared tables on your Oracle database please run following script in your database:
+Use following NuGet command to install JobToolkit Oracle library.  
 
 ```
-JobToolkit/JobToolkit.Repository.Oracle/Scripts/Instal.sql
+PM> Install-Package JobToolkit.Oracle
 ```
 
-And then use following NuGet command to install Oracle repository library. 
+then for creating requared tables on your Oracle database please run following script in your database:
 
 ```
-PM> Install-Package JobToolkit.Repository.Oracle
+JobToolkit/JobToolkit.Oracle/Scripts/Oracle.sql
 ```
 
-Then use following syntax to store jobs on Oracle database or see Configuration section of this document:
+Then use following syntax to store jobs on Oracle:
 
 ```csharp
-var repository = new JobToolkit.Repository.Oracle.OracleJobRepository(<oracle connection string>);
+var repository = new JobToolkit.Oracle.OracleJobRepository(<sql server connection string>);
 JobManager jobManager = new JobManager(repository);
 JobServer jobServer = new JobServer(repository);
 jobServer.Start();
 ```
-Note: For using oracle database Oracle Client must be installed and counfigured on the machine running JobToolkit.
 
-Configuration
---------------
+Note: jobToolkit for Oracle database uses OracleManagement library and not reauares to install Oracle Client on the machine running JobToolkit.
+
+
+**SQLite**
+
+Use following NuGet command to install JobToolkit SQLite library.  
+
+```
+PM> Install-Package JobToolkit.SQLite
+```
+
+then for creating requared tables on your SQLite database please run following script in your database:
+
+```
+JobToolkit/JobToolkit.SQLite/Scripts/SQLite.sql
+```
+
+Then use following syntax to store jobs on SQLite:
+
+```csharp
+var repository = new JobToolkit.SQLite.SQLiteJobRepository(<sql server connection string>);
+JobManager jobManager = new JobManager(repository);
+JobServer jobServer = new JobServer(repository);
+jobServer.Start();
+```
+
+**Redis Cache**
+
+Use following NuGet command to install JobToolkit Redis library.  
+
+```
+PM> Install-Package JobToolkit.Redis
+```
+
+Then use following syntax to store jobs on Redis:
+
+```csharp
+var repository = new JobToolkit.Redis.RedisJobRepository(<sql server connection string>);
+JobManager jobManager = new JobManager(repository);
+JobServer jobServer = new JobServer(repository);
+jobServer.Start();
+```
+
+Dependency Injection
+--------------------
+
+JobToolkit supports Dependency Injection. Following example shows how to use JobToolkit by .Net Core injection mechanism.
+
+**In Memory**
+
+```csharp
+service.AddSingleton<IJobRepository>(s =>
+{
+    return new InMemoryJobRepository();
+});
+
+Note: Remember to register InMemoryJobRepository as singleton to make sure using same repository instance in whole of your project.
+
+service.AddTransient<IScheduler>(s =>
+{
+    var repository = s.GetService<IJobRepository>();
+    return new JobManager(repository);
+});
+```
+
+service.AddSingleton<IJobServer>(s =>
+{
+    var repository = s.GetService<IJobRepository>();
+    return new JobManager(JobServer);
+});
+```
+
+Note: Remember to register JobServer as singleton to make sure using same JobServer instance in whole of your project.
+
+Now you can inject JobToolkit at runtime into your services/controllers:
+
+```csharp
+public class EmployeesController 
+{
+    private readonly IScheduler _scheduler;
+
+    public EmployeesController(IScheduler _scheduler)
+    {
+        _scheduler = _scheduler;
+    }
+
+    // use _scheduler
+}
+```
+
+Configuration for .Net Framework projects
+-----------------------------------------
 
 If you dont like to hardcode yor repository type in your code you can use Web.config or App.config file to manage repositories.
 

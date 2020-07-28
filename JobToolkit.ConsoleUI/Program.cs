@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JobToolkit.AnyCacheRepository;
+using JobToolkit.AnyCache;
 using JobToolkit.Core;
+using JobToolkit.InMemory;
 
 namespace JobToolkit.ConsoleUI
 {
@@ -17,7 +18,7 @@ namespace JobToolkit.ConsoleUI
 
             
 
-            IJobRepository repository = new AnyCacheJobRepository();
+            IJobRepository repository = new InMemoryJobRepository();
 
             JobManager jobManager = new JobManager(repository);
             JobServer jobServer = new JobServer(repository);

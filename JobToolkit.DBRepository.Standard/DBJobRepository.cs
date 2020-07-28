@@ -1,4 +1,5 @@
-﻿using ORMToolkit.Core;
+﻿using JobToolkit.Core;
+using ORMToolkit.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobToolkit.Core.Standard.Repositories.Database
+namespace JobToolkit.DBRepository
 {
     public class DBJobRepository : IJobRepository, IEnumerable
     {
@@ -27,7 +28,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
             this.Formatter = formatter;
         }
 
-        public string Add(Job job)
+        public virtual string Add(Job job)
         {
             var dbJob = new DBJob
             {
@@ -53,7 +54,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
 
             return job.Id;
         }
-        public Job Get(string jobId)
+        public virtual Job Get(string jobId)
         {
             Job job = null;
 
@@ -101,7 +102,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
 
             return job;
         }
-        public void Update(Job job)
+        public virtual void Update(Job job)
         {
             var dbJob = new
             {
@@ -124,7 +125,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
 
             DataManager.Update<DBJob>(dbJob, new { Id = job.Id });
         }
-        public void UpdatExecStatus(Job job)
+        public virtual void UpdatExecStatus(Job job)
         {
             var dbJob = new
             {
@@ -168,7 +169,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
                 }
             }
         }
-        public Job Remove(string jobId)
+        public virtual Job Remove(string jobId)
         {
             var job = Get(jobId);
             if(job != null)
@@ -179,15 +180,15 @@ namespace JobToolkit.Core.Standard.Repositories.Database
             
             return job;
         }
-        public void RemoveAll()
+        public virtual void RemoveAll()
         {
             throw new NotImplementedException();
         }
-        public List<Job> GetAll()
+        public virtual List<Job> GetAll()
         {
             return GetAll(new JobDataQueryCriteria());
         }
-        public List<Job> GetAll(JobDataQueryCriteria criteria)
+        public virtual List<Job> GetAll(JobDataQueryCriteria criteria)
         {
             string sql = @"select Job.*, JobExec.RetryNumber, JobExec.StartTime, JobExec.EndTime
                        , JobExec.Status as ExecStatus, JobExec.Description as ExecDescription, JobExec.NextRetryTime
@@ -275,7 +276,7 @@ namespace JobToolkit.Core.Standard.Repositories.Database
             return whereStr;
         }
 
-        public IEnumerator<Job> GetEnumerator()
+        public virtual IEnumerator<Job> GetEnumerator()
         {
             foreach (var item in GetAll())
                 yield return (Job)item;

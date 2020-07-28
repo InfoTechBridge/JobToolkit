@@ -1,18 +1,15 @@
-﻿using ORMToolkit.Core.Attributes;
+﻿using JobToolkit.Core;
+using ORMToolkit.Core.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobToolkit.Core.Standard.Repositories.Database
+namespace JobToolkit.DBRepository
 {
-    [TableInfo(tableName: "JobExec")]
-    public class DBJobExec
+    public class DBJobSummary : DBJob
     {
-        [PrimaryKey]
-        public string Id { get; set; }
-        public string JobId { get; set; }
         public int RetryNumber { get; set; }
 
         [Mapper(typeof(SqlLiteDateTimeOffsetMapper))]
@@ -20,9 +17,8 @@ namespace JobToolkit.Core.Standard.Repositories.Database
 
         [Mapper(typeof(SqlLiteDateTimeOffsetMapper))]
         public DateTimeOffset? EndTime { get; set; }
-
-        public JobExecutanStatus Status { get; set; }
-        public string Description { get; set; }
+        public JobExecutanStatus ExecStatus { get; set; }
+        public string ExecDescription { get; set; }
 
         [Mapper(typeof(SqlLiteDateTimeOffsetMapper))]
         public DateTimeOffset? NextRetryTime { get; set; }

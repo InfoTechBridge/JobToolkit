@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>JobToolkit.InMemory</PackageId>
+    <Authors>Amir Arayeshi</Authors>
+    <Company>Information Technology Bridge</Company>
+    <Product>JobToolkit</Product>
+    <Copyright>Copyright © 2020 InfoTechBridge</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>.Net ASP.NET Job Scheduler Long-Running</Description>
+    <PackageProjectUrl>https://github.com/InfoTechBridge/JobToolkit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InfoTechBridge/JobToolkit</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>InMemmory csharp dotnet ASP.NET job dotnetcore job-scheduler background-jobs Long-Running Scheduler</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AnyCache.InMemory" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobToolkit.AnyCache\JobToolkit.AnyCache.csproj" />
+    <ProjectReference Include="..\JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj" />
+  </ItemGroup>
+
+</Project>

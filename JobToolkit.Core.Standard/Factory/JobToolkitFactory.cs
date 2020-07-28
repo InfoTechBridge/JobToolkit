@@ -1,5 +1,4 @@
 ﻿using JobToolkit.Core.Configuration;
-using JobToolkit.Core.Repositories.Cache;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -37,7 +36,8 @@ namespace JobToolkit.Core.Factory
                 ? new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter()
                 : (IFormatter)System.Activator.CreateInstance(GetType(config.FormatterType)));
 
-            var repositoryType = string.IsNullOrEmpty(config.Type.Trim()) ? typeof(CacheJobRepository) : GetType(config.Type);
+            //var repositoryType = string.IsNullOrEmpty(config.Type.Trim()) ? typeof(CacheJobRepository) : GetType(config.Type);
+            var repositoryType = GetType(config.Type);
             if (repositoryType == null)
                 throw new ApplicationException("Invalid repository type.");
 

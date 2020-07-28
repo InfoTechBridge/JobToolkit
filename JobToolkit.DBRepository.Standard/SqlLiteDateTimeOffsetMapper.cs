@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobToolkit.Core.Standard.Repositories.Database
+namespace JobToolkit.DBRepository
 {
     /// <summary>
     /// SQLIte saves DateTimeOffset as string in database but it couldn't convert it to DateTimeOffset when reading

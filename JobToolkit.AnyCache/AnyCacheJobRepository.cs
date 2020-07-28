@@ -1,23 +1,19 @@
 ﻿using AnyCache.Core;
-using AnyCache.InMemory;
 using JobToolkit.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JobToolkit.AnyCacheRepository
+namespace JobToolkit.AnyCache
 {
     public class AnyCacheJobRepository : IJobRepository, IEnumerable
     {
         private readonly IAnyCache Cache;
 
-        public AnyCacheJobRepository(IAnyCache cache = null)
-        {            
-            if (cache == null)
-                Cache = new InMemoryCache();
-            else
-                Cache = cache; 
+        public AnyCacheJobRepository(IAnyCache cache)
+        {
+            this.Cache = cache;
         }
 
         public string Add(Job job)
@@ -27,12 +23,12 @@ namespace JobToolkit.AnyCacheRepository
             return key;
         }
 
-        public Job Get(string jobId)
+        public virtual Job Get(string jobId)
         {
             return Cache.Get<Job>(jobId);
         }
 
-        public List<Job> GetAll()
+        public virtual List<Job> GetAll()
         {
             List<Job> jobs = new List<Job>();
             foreach (var item in Cache)
@@ -40,7 +36,7 @@ namespace JobToolkit.AnyCacheRepository
             return jobs;
         }
 
-        public List<Job> GetAll(JobDataQueryCriteria criteria)
+        public virtual List<Job> GetAll(JobDataQueryCriteria criteria)
         {
             List<Job> jobs = new List<Job>();
             foreach (var item in Cache)
@@ -51,7 +47,7 @@ namespace JobToolkit.AnyCacheRepository
             return jobs;
         }
 
-        public IEnumerator<Job> GetEnumerator()
+        public virtual IEnumerator<Job> GetEnumerator()
         {
             foreach (var item in Cache)
                 yield return (Job)item.Value;
@@ -63,21 +59,21 @@ namespace JobToolkit.AnyCacheRepository
             return this.GetEnumerator();
         }
 
-        public Job Remove(string jobId)
+        public virtual Job Remove(string jobId)
         {
             return Cache.Remove<Job>(jobId);
         }
 
-        public void RemoveAll()
+        public virtual void RemoveAll()
         {
             Cache.ClearCache();
         }
-        public void Update(Job job)
+        public virtual void Update(Job job)
         {
             Cache.Set(job.Id, job);
         }
 
-        public void UpdatExecStatus(Job job)
+        public virtual void UpdatExecStatus(Job job)
         {
             Update(job);
 

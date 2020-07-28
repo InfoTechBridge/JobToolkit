@@ -57,13 +57,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobToolkit.AnyCache\JobToolkit.AnyCacheRepository.csproj">
-      <Project>{e6248ae9-09eb-4011-b70e-3cba8069d339}</Project>
-      <Name>JobToolkit.AnyCacheRepository</Name>
+    <ProjectReference Include="..\JobToolkit.AnyCache\JobToolkit.AnyCache.csproj">
+      <Project>{E967450D-F158-4DAF-A29F-CF9BA1559A61}</Project>
+      <Name>JobToolkit.AnyCache</Name>
     </ProjectReference>
     <ProjectReference Include="..\JobToolkit.Core.Standard\JobToolkit.Core.Standard.csproj">
       <Project>{cb8c25ed-433d-4a64-9389-6431d149e0cc}</Project>
       <Name>JobToolkit.Core.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobToolkit.InMemory\JobToolkit.InMemory.csproj">
+      <Project>{E8CB42D1-5628-45E8-B64A-90B4F4EEDA00}</Project>
+      <Name>JobToolkit.InMemory</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

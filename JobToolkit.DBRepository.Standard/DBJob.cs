@@ -1,11 +1,12 @@
-﻿using ORMToolkit.Core.Attributes;
+﻿using JobToolkit.Core;
+using ORMToolkit.Core.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobToolkit.Core.Standard.Repositories.Database
+namespace JobToolkit.DBRepository
 {
     [TableInfo(tableName: "Job")]
     public class DBJob
