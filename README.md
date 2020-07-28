@@ -2,7 +2,7 @@
 [![License](http://img.shields.io/:license-MIT-blue.svg)](https://raw.githubusercontent.com/giacomelli/JobSharp/master/LICENSE)
 
 
-.NET Crontab Background Job Scheduler for .Netframework, .Net Core and Xamarin
+.NET Crontab Background Job Scheduler for .Net Framework, .Net Core and Xamarin
 
 Features
 ===
@@ -49,12 +49,12 @@ Automaticly retray when fail happens in job execution time. In following command
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 2), AutomaticRetryPolicy.Default);
 ```
 
-**Cron tab executation tasks**
+**Crontab executation tasks**
 
 ```csharp
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 3), DateTimeOffset.Now, "* * * * *", null);
 ```
-Determining end time for cron tab jobs. The following command executes job for 90 days.
+Determining end time for crontab jobs. The following command executes job for 90 days.
 
 ```csharp
 jobManager.Schedule(() => Console.WriteLine("Exprission job {0}.", 3), DateTimeOffset.Now, "* * * * *", DateTimeOffset.Now.AddDays(90));
@@ -94,11 +94,11 @@ Job job = jobManager.Schedule(new CustomTask(), AutomaticRetryPolicy.Default);
 Installation
 -------------
 
-JobToolkit stores jobs in diffrent type of storage such as InMemory, Redis, Sql Server, Oracle and SQLite databases and is available as a NuGet package. 
+JobToolkit stores jobs in diffrent type of storage such as InMemory, Redis, Sql Server, Oracle and SQLite databases. JobToolkit library is available as a NuGet packages. 
 
-**In Memory job repository**
+**InMemory job repository**
 
-JobToolkit saves jobs in memmory cache and everything will be cleared when the application ends.
+JobToolkit saves jobs in memory and everything will be cleared when the application ends.
 
 Use following NuGet command to install JobToolkit InMemory library. 
 
@@ -123,7 +123,7 @@ Use following NuGet command to install JobToolkit SqlServer library.
 PM> Install-Package JobToolkit.SqlServer
 ```
 
-then for creating requared tables on your SqlServer database please run following script in your database:
+Then for creating requared tables on your SqlServer database please run following script in your database:
 
 ```
 JobToolkit/JobToolkit.SqlServer/Scripts/SqlServer.sql
@@ -146,7 +146,7 @@ Use following NuGet command to install JobToolkit Oracle library.
 PM> Install-Package JobToolkit.Oracle
 ```
 
-then for creating requared tables on your Oracle database please run following script in your database:
+Then for creating requared tables on your Oracle database please run following script in your database:
 
 ```
 JobToolkit/JobToolkit.Oracle/Scripts/Oracle.sql
@@ -161,7 +161,7 @@ JobServer jobServer = new JobServer(repository);
 jobServer.Start();
 ```
 
-Note: jobToolkit for Oracle database uses OracleManagement library and not reauares to install Oracle Client on the machine running JobToolkit.
+Note: JobToolkit for Oracle database uses OracleManagement library and not reauares to install Oracle Client on the machine running JobToolkit.
 
 
 **SQLite**
@@ -172,7 +172,7 @@ Use following NuGet command to install JobToolkit SQLite library.
 PM> Install-Package JobToolkit.SQLite
 ```
 
-then for creating requared tables on your SQLite database please run following script in your database:
+Then for creating requared tables on your SQLite database please run following script in your database:
 
 ```
 JobToolkit/JobToolkit.SQLite/Scripts/SQLite.sql
@@ -217,8 +217,6 @@ service.AddSingleton<IJobRepository>(s =>
     return new InMemoryJobRepository();
 });
 
-Note: Remember to register InMemoryJobRepository as singleton to make sure using same repository instance in whole of your project.
-
 service.AddTransient<IScheduler>(s =>
 {
     var repository = s.GetService<IJobRepository>();
@@ -233,6 +231,7 @@ service.AddSingleton<IJobServer>(s =>
 });
 ```
 
+Note: Remember to register InMemoryJobRepository as singleton to make sure using same repository instance in whole of your project.
 Note: Remember to register JobServer as singleton to make sure using same JobServer instance in whole of your project.
 
 Now you can inject JobToolkit at runtime into your services/controllers:
