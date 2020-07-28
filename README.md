@@ -2,7 +2,7 @@
 [![License](http://img.shields.io/:license-MIT-blue.svg)](https://raw.githubusercontent.com/giacomelli/JobSharp/master/LICENSE)
 
 
-.NET Job Scheduler
+.NET Crontab Background Job Scheduler for .Netframework, .Net Core and Xamarin
 
 Features
 ===
@@ -21,7 +21,7 @@ Features
     - Redis cache repository for job storage
     - Custom storage support by writing custom repositories such as (MySql, PostGre Sql and ... )
 - Easy instalation and configuration
-- Supports any tipe of projects (Web, Win, Console, Win Service and ...)
+- Supports any type of projects (Web, Win, Console, Win Service and ...)
 - Supports DotNet Framework, DotNet Core and Xamarin projects
 - Allow Sepration between job producer and job executer on diffrent application or servers (Multiple producers and one executer)
 
