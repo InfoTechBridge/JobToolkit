@@ -222,7 +222,6 @@ service.AddTransient<IScheduler>(s =>
     var repository = s.GetService<IJobRepository>();
     return new JobManager(repository);
 });
-```
 
 service.AddSingleton<IJobServer>(s =>
 {
