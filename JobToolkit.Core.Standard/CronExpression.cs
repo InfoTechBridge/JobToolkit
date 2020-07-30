@@ -13,19 +13,40 @@ namespace JobToolkit.Core
 
         public CronExpression(string exp)
         {
-            NCrontab.Advanced.CrontabSchedule.Parse(exp);
             Expression = exp;
         }
-        
+
+        public DateTimeOffset GetNextTime()
+        {
+            return GetNextTime(DateTimeOffset.Now);
+        }
+
         public DateTimeOffset GetNextTime(DateTimeOffset after)
         {
-            return NCrontab.Advanced.CrontabSchedule.Parse(Expression).GetNextOccurrence(after.DateTime);
+            var tokens = Expression?.Split(new char[] { ' ' });
+            if (tokens.Length == 5)
+                return NCrontab.Advanced.CrontabSchedule.Parse(Expression).GetNextOccurrence(after.DateTime);
+            else if (tokens.Length == 6)
+                return NCrontab.Advanced.CrontabSchedule.Parse(Expression, NCrontab.Advanced.Enumerations.CronStringFormat.WithSeconds).GetNextOccurrence(after.DateTime);
+            else if (tokens.Length == 7)
+                return NCrontab.Advanced.CrontabSchedule.Parse(Expression, NCrontab.Advanced.Enumerations.CronStringFormat.WithSecondsAndYears).GetNextOccurrence(after.DateTime);
+            else
+                throw new ApplicationException("invalid Crontab expression.");
+
             //NCrontab.CrontabSchedule.Parse("").GetNextOccurrence()
         }
 
         public DateTimeOffset GetNextTime(DateTimeOffset after, DateTimeOffset before)
         {
-            return NCrontab.Advanced.CrontabSchedule.Parse(Expression).GetNextOccurrence(after.DateTime, before.DateTime);
+            var tokens = Expression?.Split(new char[] { ' ' });
+            if (tokens.Length == 5)
+                return NCrontab.Advanced.CrontabSchedule.Parse(Expression).GetNextOccurrence(after.DateTime, before.DateTime);
+            else if (tokens.Length == 6)
+                return NCrontab.Advanced.CrontabSchedule.Parse(Expression, NCrontab.Advanced.Enumerations.CronStringFormat.WithSeconds).GetNextOccurrence(after.DateTime, before.DateTime);
+            else if (tokens.Length == 7)
+                return NCrontab.Advanced.CrontabSchedule.Parse(Expression, NCrontab.Advanced.Enumerations.CronStringFormat.WithSecondsAndYears).GetNextOccurrence(after.DateTime, before.DateTime);
+            else
+                throw new ApplicationException("invalid Crontab expression.");
         }
 
         public static CronExpression Parse(string exp)
@@ -47,6 +68,23 @@ namespace JobToolkit.Core
         public override string ToString()
         {
             return Expression;
+        }
+
+        /// <summary>
+        /// Returns cron expression that fires every Second.
+        /// </summary>
+        public static string Secondly()
+        {
+            return "* * * * * *";
+        }
+
+        /// <summary>
+        /// Returns cron expression that fires every minute at the specified second.
+        /// </summary>
+        /// <param name="second">The second in which the schedule will be activated (0-59).</param>
+        public static string Minutely(int second)
+        {
+            return String.Format("{0} * * * * *", second);
         }
 
         /// <summary>

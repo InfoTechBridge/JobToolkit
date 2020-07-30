@@ -64,6 +64,11 @@ namespace JobToolkit.Core
             this.CreateTime = DateTimeOffset.Now;
         }
 
+        public DateTimeOffset? GetNextScheduleTime()
+        {
+            return GetNextScheduleTime(DateTimeOffset.Now);
+        }
+
         public DateTimeOffset? GetNextScheduleTime(DateTimeOffset after)
         {
             DateTimeOffset? nextTime = null;

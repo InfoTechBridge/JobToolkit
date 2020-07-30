@@ -86,7 +86,8 @@ namespace JobToolkit.Core
                         IList<Job> jobs = Repository.GetAll(criteria);
                         if (jobs.Count <= 0)
                         {
-                            System.Threading.Thread.Sleep(200);
+                            Task.Delay(200).GetAwaiter().GetResult();
+                            //System.Threading.Thread.Sleep(200);
                             continue;
                         }
 

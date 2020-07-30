@@ -68,7 +68,7 @@ namespace JobToolkit.NetCore.ConsoleApp
             Job retJob2 = jobManager.Get(job2.Id);
             //retJob2.DoAction();
 
-            Job job3 = jobManager.Schedule(() => Console.WriteLine("Exprission job {0} executed.", 3), DateTimeOffset.Now, "* * * * *", null);
+            Job job3 = jobManager.Schedule(() => Console.WriteLine("Exprission job {0} executed.", 3), DateTimeOffset.Now, "*/30 * * * * *", null);
             Job retJob3 = jobManager.Get(job3.Id);
             //retJob3.DoAction();
 
