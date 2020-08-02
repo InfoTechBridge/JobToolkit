@@ -60,7 +60,7 @@ namespace JobToolkit.NetCore.ConsoleApp
 
             System.Threading.Thread.Sleep(1000);
 
-            Job job1 = jobManager.Schedule(() => Console.WriteLine("Exprission job {0} executed.", 2), null);
+            Job job1 = jobManager.Schedule(() => Console.WriteLine("Exprission job {0} executed.", 2));
             Job retJob1 = jobManager.Get(job1.Id);
             //retJob1.DoAction();
 
@@ -68,7 +68,7 @@ namespace JobToolkit.NetCore.ConsoleApp
             Job retJob2 = jobManager.Get(job2.Id);
             //retJob2.DoAction();
 
-            Job job3 = jobManager.Schedule(() => Console.WriteLine("Exprission job {0} executed.", 3), DateTimeOffset.Now, "*/30 * * * * *", null);
+            Job job3 = jobManager.Schedule(() => Console.WriteLine($"Exprission job 3 executed at {DateTime.Now}."), "10 * * * * *");
             Job retJob3 = jobManager.Get(job3.Id);
             //retJob3.DoAction();
 

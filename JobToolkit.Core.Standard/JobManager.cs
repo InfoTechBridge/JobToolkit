@@ -72,7 +72,13 @@ namespace JobToolkit.Core
         {
             return Schedule(task, DateTimeOffset.Now.Add(offset), null, null, automaticRetry);
         }
-        public Job Schedule(JobTask task, DateTimeOffset scheduleTime, CronExpression cron, DateTimeOffset? scheduleEndTime, AutomaticRetryPolicy automaticRetry)
+
+        public Job Schedule(JobTask task, CronExpression cron, DateTimeOffset? scheduleEndTime = null, AutomaticRetryPolicy automaticRetry = null)
+        {
+            return Schedule(task, DateTimeOffset.Now, cron, scheduleEndTime, automaticRetry);
+        }
+
+        public Job Schedule(JobTask task, DateTimeOffset scheduleTime, CronExpression cron, DateTimeOffset? scheduleEndTime = null, AutomaticRetryPolicy automaticRetry = null)
         {
             Job job = new Job(task, scheduleTime, cron, scheduleEndTime, automaticRetry);
             return Enqueue(job);

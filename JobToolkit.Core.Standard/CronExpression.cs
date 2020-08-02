@@ -23,7 +23,7 @@ namespace JobToolkit.Core
 
         public DateTimeOffset GetNextTime(DateTimeOffset after)
         {
-            var tokens = Expression?.Split(new char[] { ' ' });
+            var tokens = Expression?.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 5)
                 return NCrontab.Advanced.CrontabSchedule.Parse(Expression).GetNextOccurrence(after.DateTime);
             else if (tokens.Length == 6)
@@ -38,7 +38,7 @@ namespace JobToolkit.Core
 
         public DateTimeOffset GetNextTime(DateTimeOffset after, DateTimeOffset before)
         {
-            var tokens = Expression?.Split(new char[] { ' ' });
+            var tokens = Expression?.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length == 5)
                 return NCrontab.Advanced.CrontabSchedule.Parse(Expression).GetNextOccurrence(after.DateTime, before.DateTime);
             else if (tokens.Length == 6)

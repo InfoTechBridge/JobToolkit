@@ -21,7 +21,11 @@ namespace JobToolkit.Core
         {
             return jobManager.Schedule(new ExpressionTask(expression), offset, automaticRetry);
         }
-        public static Job Schedule(this JobManager jobManager, Expression<Action> expression, DateTimeOffset scheduleTime, CronExpression cron, DateTimeOffset? scheduleEndTime, AutomaticRetryPolicy automaticRetry = null)
+        public static Job Schedule(this JobManager jobManager, Expression<Action> expression, CronExpression cron, DateTimeOffset? scheduleEndTime = null, AutomaticRetryPolicy automaticRetry = null)
+        {
+            return jobManager.Schedule(new ExpressionTask(expression), cron, scheduleEndTime, automaticRetry);
+        }
+        public static Job Schedule(this JobManager jobManager, Expression<Action> expression, DateTimeOffset scheduleTime, CronExpression cron, DateTimeOffset? scheduleEndTime = null, AutomaticRetryPolicy automaticRetry = null)
         {
             return jobManager.Schedule(new ExpressionTask(expression), scheduleTime, cron, scheduleEndTime, automaticRetry);
         }

@@ -15,7 +15,7 @@
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>csharp dotnet ASP.NET job dotnetcore job-scheduler background-jobs Long-Running Scheduler</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <RootNamespace>JobToolkit.Core</RootNamespace>
     <AssemblyName>JobToolkit.Core</AssemblyName>
   </PropertyGroup>
